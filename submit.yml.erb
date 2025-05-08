@@ -1,0 +1,11 @@
+---
+batch_connect:
+  template: vnc
+script:
+  native:
+    - "--mem-per-cpu"
+    - "<%= num_RAM.blank? ? 4 : num_RAM.to_i %>G"
+    <%- if bind_gpu.include?("A40") -%>
+    - "--gres"
+    - "gpu:A40:1"
+    <%- end -%>

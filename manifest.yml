@@ -1,0 +1,10 @@
+---
+name: SN - Remote Desktop
+icon: fas://brain
+category: Interactive Apps
+subcategory: Desktops
+role: batch_connect
+description: "This app will launch an interactive desktop on one or more compute nodes.
+  You\r\nwill have full access to the resources these nodes provide. This is analogous\r\nto
+  an interactive batch job.\r\n\r\nThis specific version is designed for a mirror
+  of the Lifesciences SN-Analysis Machines.\r\n"

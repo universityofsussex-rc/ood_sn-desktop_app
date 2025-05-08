@@ -1,0 +1,70 @@
+---
+cluster: "slurm"
+attributes:
+  desktop:
+    label: "Desktop Environment"
+    widget: select
+    options:
+      - "xfce"
+  bc_vnc_idle: 0
+  bc_vnc_resolution:
+    required: true
+  node_type: null
+  custom_env:
+    widget: "text_field"
+    help: |
+      Path to bash script to execute at the start of the job
+  bc_num_hours:
+    value: "4"
+  num_cores:
+    widget: "number_field"
+    label: "Number of cores"
+    value: 1
+    help: |
+      Number of CPUs
+    min: 0
+    max: 128
+    step: 1
+  num_RAM:
+    widget: "number_field"
+    label: "GB of RAM per core"
+    value: 4
+    help: |
+      Ram per cpu requested - will not run if total is above 1TB.
+    min: 1
+    max: 1000
+    step: 1
+  cuda_version:
+    widget: select
+    label: "CUDA Version"
+    help: "This defines the version of CUDA to load if you are binding a GPU"
+    options:
+      - ["v12.4.0", "CUDA/12.4.0" ]
+      - ["v11.7.0", "CUDA/11.7.0" ]
+      - ["v11.3.1", "CUDA/11.3.1" ]
+  bind_gpu:
+      widget: select
+      label: "Require GPU?"
+      help: |
+        - **No** <br>
+          These will submit your jobs to the general HPC compute nodes without binding a GPU.
+        - **GPU Enabled** <br>
+          These are HPC machines with GPUs. You can select the flavour of GPU. Currently interactive sessions are limited to 1 GPU.
+      options:
+        - [ "No", "general" ]
+        - [ "A40",     "gpu-A40" ]
+form:
+  - bc_vnc_idle
+  - desktop
+  - bc_num_hours
+  - bc_num_slots
+  - num_cores
+  - num_RAM
+  - node_type
+  - bc_queue
+  - bind_gpu
+  - cuda_version
+  - custom_env
+  - bc_vnc_resolution
+  - bc_email_on_started
+
