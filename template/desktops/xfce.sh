@@ -1,10 +1,21 @@
 export XDG_CONFIG_HOME="${HOME}/.sn_desktop_config"
 export XDG_DATA_HOME="${HOME}/.sn_desktop_data"
 export XDG_DESKTOP_DIR="${HOME}/SN_Desktop"
+export XDG_TEMPLATES_DIR="$HOME/SN_Templates"
+export XDG_PUBLICSHARE_DIR="$HOME/SN_Public"
+export XDG_DOCUMENTS_DIR="$HOME/SN_Documents"
+export XDG_MUSIC_DIR="$HOME/SN_Music"
+export XDG_PICTURES_DIR="$HOME/SN_Pictures"
+export XDG_VIDEOS_DIR="$HOME/SN_Videos"
+
 
 if [ ! -d "$XDG_CONFIG_HOME" ]; then rsync -av /mnt/shared/public/sn-desktop/.config/ "$XDG_CONFIG_HOME/"; fi
 if [ ! -d "$XDG_DATA_HOME" ]; then rsync -av /mnt/shared/public/sn-desktop/data/ "$XDG_DATA_HOME/"; fi
 if [ ! -d "$XDG_DESKTOP_DIR" ]; then rsync -av /mnt/shared/public/sn-desktop/Desktop/ "$XDG_DESKTOP_DIR/"; fi
+
+# Replace placeholders
+find "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_DESKTOP_DIR" -type f \
+  -exec sed -i "s|__USER__|${USER}|g" {} +
 
 CONFIG="${XDG_CONFIG_HOME}"
 DATA="${XDG_DATA_HOME}"
