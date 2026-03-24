@@ -3,15 +3,16 @@ batch_connect:
   template: vnc
 script:
   copy_environment: true
-  - export XDG_CONFIG_HOME="$HOME/.sn_desktop_config"
-  - export XDG_DATA_HOME="$HOME/.sn_desktop_data"
-  - export XDG_DESKTOP_DIR="$HOME/SN_Desktop"
-  - export DESKTOP_SESSION=xfce
-  - export XDG_CURRENT_DESKTOP=XFCE
-  - export XDG_SESSION_DESKTOP=xfce
-  - if [ ! -d "$XDG_CONFIG_HOME/xfce4" ]; then rsync -av /mnt/shared/public/sn_desktop/.config "$XDG_CONFIG_HOME/"; fi
-  - if [ ! -d "$XDG_DATA_HOME/applications" ]; then rsync -av /mnt/shared/public/sn_desktop/applications "$XDG_DATA_HOME/"; fi
-  - if [ ! -d "$XDG_DESKTOP_DIR" ]; then rsync -av /mnt/shared/public/sn_desktop/Desktop "$XDG_DESKTOP_DIR"; fi
+  script_wrapper: |
+    export XDG_CONFIG_HOME="${HOME}/.sn_desktop_config"
+    export XDG_DATA_HOME="${HOME}/.sn_desktop_data"
+    export XDG_DESKTOP_DIR="${HOME}/SN_Desktop"
+    export DESKTOP_SESSION=xfce
+    export XDG_CURRENT_DESKTOP=XFCE
+    export XDG_SESSION_DESKTOP=xfce
+    if [ ! -d "$XDG_CONFIG_HOME/xfce4" ]; then rsync -av /mnt/shared/public/sn_desktop/.config "$XDG_CONFIG_HOME/"; fi
+    if [ ! -d "$XDG_DATA_HOME/applications" ]; then rsync -av /mnt/shared/public/sn_desktop/applications "$XDG_DATA_HOME/"; fi
+    if [ ! -d "$XDG_DESKTOP_DIR" ]; then rsync -av /mnt/shared/public/sn_desktop/Desktop "$XDG_DESKTOP_DIR"; fi
   native:
   - "--mem-per-cpu"
   - "<%= num_RAM.blank? ? 4 : num_RAM.to_i %>G"
