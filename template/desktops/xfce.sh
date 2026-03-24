@@ -8,10 +8,16 @@ export XDG_MUSIC_DIR="$HOME/SN_Music"
 export XDG_PICTURES_DIR="$HOME/SN_Pictures"
 export XDG_VIDEOS_DIR="$HOME/SN_Videos"
 
-
+# Autogen Wont create so we do
 if [ ! -d "$XDG_CONFIG_HOME" ]; then rsync -av /mnt/shared/public/sn-desktop/.config/ "$XDG_CONFIG_HOME/"; fi
 if [ ! -d "$XDG_DATA_HOME" ]; then rsync -av /mnt/shared/public/sn-desktop/data/ "$XDG_DATA_HOME/"; fi
 if [ ! -d "$XDG_DESKTOP_DIR" ]; then rsync -av /mnt/shared/public/sn-desktop/Desktop/ "$XDG_DESKTOP_DIR/"; fi
+if [ ! -d "$XDG_TEMPLATES_DIR" ]; then mkdir -p "$XDG_TEMPLATES_DIR"; fi
+if [ ! -d "$XDG_PUBLICSHARE_DIR" ]; then mkdir -p "$XDG_PUBLICSHARE_DIR"; fi
+if [ ! -d "$XDG_DOCUMENTS_DIR" ]; then mkdir -p "$XDG_DOCUMENTS_DIR"; fi
+if [ ! -d "$XDG_MUSIC_DIR" ]; then mkdir -p "$XDG_MUSIC_DIR"; fi
+if [ ! -d "$XDG_PICTURES_DIR" ]; then mkdir -p "$XDG_PICTURES_DIR"; fi
+if [ ! -d "$XDG_VIDEOS_DIR" ]; then mkdir -p "$XDG_VIDEOS_DIR"; fi
 
 # Replace placeholders
 find "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_DESKTOP_DIR" -type f \
