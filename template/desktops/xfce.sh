@@ -2,9 +2,9 @@ export XDG_CONFIG_HOME="${HOME}/.sn_desktop_config"
 export XDG_DATA_HOME="${HOME}/.sn_desktop_data"
 export XDG_DESKTOP_DIR="${HOME}/SN_Desktop"
 
-if [ ! -d "$XDG_CONFIG_HOME" ]; then rsync -av /mnt/shared/public/sn_desktop/.config "$XDG_CONFIG_HOME"; fi
-if [ ! -d "$XDG_DATA_HOME" ]; then rsync -av /mnt/shared/public/sn_desktop/data "$XDG_DATA_HOME"; fi
-if [ ! -d "$XDG_DESKTOP_DIR" ]; then rsync -av /mnt/shared/public/sn_desktop/Desktop "$XDG_DESKTOP_DIR"; fi
+if [ ! -d "$XDG_CONFIG_HOME" ]; then rsync -av /mnt/shared/public/sn-desktop/.config "$XDG_CONFIG_HOME"; fi
+if [ ! -d "$XDG_DATA_HOME" ]; then rsync -av /mnt/shared/public/sn-desktop/data "$XDG_DATA_HOME"; fi
+if [ ! -d "$XDG_DESKTOP_DIR" ]; then rsync -av /mnt/shared/public/sn-desktop/Desktop "$XDG_DESKTOP_DIR"; fi
 
 CONFIG="${XDG_CONFIG_HOME}"
 DATA="${XDG_DATA_HOME}"
