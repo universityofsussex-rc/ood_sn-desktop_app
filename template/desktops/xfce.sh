@@ -26,6 +26,14 @@ find "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_DESKTOP_DIR" -type f \
 CONFIG="${XDG_CONFIG_HOME}"
 DATA="${XDG_DATA_HOME}"
 
+# Load Lmod so "module" works
+if [ -f /etc/profile.d/lmod.sh ]; then
+    source /etc/profile.d/lmod.sh
+elif [ -f /usr/share/lmod/lmod/init/profile ]; then
+    source /usr/share/lmod/lmod/init/profile
+fi
+
+
 # Remove any preconfigured monitors
 if [[ -f "${CONFIG}/monitors.xml" ]]; then
   mv "${CONFIG}/monitors.xml" "${CONFIG}/monitors.xml.bak"

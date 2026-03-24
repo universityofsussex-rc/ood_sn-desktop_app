@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-
+# Load Lmod so "module" works
+if [ -f /etc/profile.d/lmod.sh ]; then
+    source /etc/profile.d/lmod.sh
+elif [ -f /usr/share/lmod/lmod/init/profile ]; then
+    source /usr/share/lmod/lmod/init/profile
+fi
 # Change working directory to user's home directory
 cd "${HOME}"
 
