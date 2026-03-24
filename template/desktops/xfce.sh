@@ -1,5 +1,14 @@
+export XDG_CONFIG_HOME="${HOME}/.sn_desktop_config"
+export XDG_DATA_HOME="${HOME}/.sn_desktop_data"
+export XDG_DESKTOP_DIR="${HOME}/SN_Desktop"
+
+if [ ! -d "$XDG_CONFIG_HOME/xfce4" ]; then rsync -av /mnt/shared/public/sn_desktop/.config "$XDG_CONFIG_HOME/"; fi
+if [ ! -d "$XDG_DATA_HOME/applications" ]; then rsync -av /mnt/shared/public/sn_desktop/applications "$XDG_DATA_HOME/"; fi
+if [ ! -d "$XDG_DESKTOP_DIR" ]; then rsync -av /mnt/shared/public/sn_desktop/Desktop "$XDG_DESKTOP_DIR"; fi
+
 CONFIG="${XDG_CONFIG_HOME}"
 DATA="${XDG_DATA_HOME}"
+
 # Remove any preconfigured monitors
 if [[ -f "${CONFIG}/monitors.xml" ]]; then
   mv "${CONFIG}/monitors.xml" "${CONFIG}/monitors.xml.bak"
