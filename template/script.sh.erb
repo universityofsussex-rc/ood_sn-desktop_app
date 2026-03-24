@@ -37,39 +37,6 @@ source <%= context.custom_env -%>
 # Default allow for outbound traffic via squid
 module load proxy
 
-# SN Environment - TODO SPYDER
-module load FSL/6.0.7-foss-2021a
-module load ConnectomeWorkbench/2.1.0-GCCcore-10.3.0
-module load FreeSurfer/6.0.0-foss-2021a-centos6_x86_64
-module load MATLAB/R2022b-GCCcore-10.3.0
-module load ImageMagick/7.0.11-14-GCCcore-10.3.0
-
-# Chris R bashrc
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
-
-alias rsvl='squeue -p visionlab -o "%.18i %.9P %.8j %.8u %.2t %.6C %.10m %.6D %R"'
-alias rscs='squeue -p cisc -o "%.18i %.9P %.8j %.8u %.2t %.6C %.10m %.6D %R"'
-alias rssn='squeue -p sussexneuro -o "%.18i %.9P %.8j %.8u %.2t %.6C %.10m %.6D %R"'
-alias rsgn='squeue -p general -o "%.18i %.9P %.8j %.8u %.2t %.6C %.10m %.6D %R"'
-alias rsvlng='squeue -p verylong -o "%.18i %.9P %.8j %.8u %.2t %.6C %.10m %.6D %R"'
-alias rslng='squeue -p long -o "%.18i %.9P %.8j %.8u %.2t %.6C %.10m %.6D %R"'
-alias rsst='squeue -p short -o "%.18i %.9P %.8j %.8u %.2t %.6C %.10m %.6D %R"'
-
-export MLM_LICENSE_FILE=/mnt/shared/easybuild/software/MATLAB/license
-export MATLABPATH=$MATLABPATH:~/SN_Documents/MATLAB
-export PYTHONPATH=/research/cisc2/shared/heudiconv:$
-export HCPPIPEDIR=/research/cisc2/shared/HCPpipelines-5.0.0
-export QUNEX=/mnt/lustre/scratch/psych/cr291/QuNex_HCP_experiments
-export PATH=${QUNEX}:/its/home/cr291/.local/bin:/research/cisc2/shared/heudiconv/bin:$HCPPIPEDIR/FreeSurfer/custom:$PATH
-
-
-
 # Start up desktop
 echo "Launching desktop '<%= context.desktop %>'..."
 source "<%= session.staged_root.join("desktops", "#{context.desktop}.sh") %>"
