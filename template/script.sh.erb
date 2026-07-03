@@ -36,6 +36,7 @@ source <%= context.custom_env -%>
 
 # Default allow for outbound traffic via squid
 module load proxy
+export UNZIP_DISABLE_ZIPBOMB_DETECTION=TRUE
 
 # Start up desktop
 echo "Launching desktop '<%= context.desktop %>'..."
