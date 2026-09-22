@@ -68,6 +68,20 @@ attributes:
       - ["0", "0"]
       - ["1", "1"]
       - ["2", "2"]
+  gpu_flavor:
+    widget: "select"
+    label: "GPUs Model"
+    help: "GPU Model to bind - specifies Nodes"
+    options:
+      - ["ANY", "ANY"]
+      - ["RTX", "RTX"]
+      - ["A40", "A40"]
+      
+  constraints:
+    widget: "text_field"
+    label: "Constraints"
+    help: |
+      Constraints to pass to the scheduler.  This is used to specify a specific node type or other constraints.
 form:
   - bc_vnc_idle
   - desktop
@@ -80,6 +94,8 @@ form:
   - bc_queue
   - cuda_version
   - gpus_per_node
+  - gpu_flavor
+  - constraints
   - custom_env
   - bc_vnc_resolution
   - bc_email_on_started
